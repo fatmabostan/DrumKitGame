@@ -1,13 +1,15 @@
 var drumButtons = document.getElementsByClassName("drum");
 for (var i = 0; i < drumButtons.length; i++) {
   drumButtons[i].addEventListener("click", function(event) {
-    SoundMaker(event.target.innerHTML)
+    SoundMaker(event.target.innerHTML);
+    ButtonAnimation(event.target.innerHTML);
 }
   );
 }
 
 document.addEventListener("keydown", function(event){
-    SoundMaker(event.key)
+    SoundMaker(event.key);
+    ButtonAnimation(event.key);
 });
 
 function SoundMaker(trigger) {
@@ -44,4 +46,13 @@ function SoundMaker(trigger) {
         console.log(trigger)
       break;
   }
+}
+
+function ButtonAnimation(buttonKey){
+    var activeButton = document.querySelector("."+ buttonKey);
+    activeButton.classList.add("pressed");
+    setTimeout(function(){
+      activeButton.classList.remove("pressed");
+    }, 120);
+    
 }
